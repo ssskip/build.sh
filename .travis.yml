@@ -1,0 +1,9 @@
+services:
+  - docker
+
+before_script:
+  - cp ./nginx.sh ./test/debian7/
+
+
+script:
+  - docker build ./test/debian7
