@@ -36,7 +36,26 @@ export SOURCE_NGINX=http://nginx.org/download/
 export SOURCE_BROTLI=https://github.com/google/ngx_brotli.git
 export SOURCE_NGINX_LUA=https://github.com/openresty/lua-nginx-module/archive/
 export SOURCE_LUAJIT=http://luajit.org/download/
+
+
+# install requirments
+if [ $OS == 'Debian' ]; then
+        DEBIAN_VERSION=$(sed 's/\..*//' /etc/debian_version)
+        if [ $DEBIAN_VERSION == '8' ];then
+            sudo apt-get -y install curl wget build-essential libgeoip-dev checkinstall git libgd2-xpm-dev
+        elif [ $DEBIAN_VERSION == '7' ];then
+            sudo apt-get -y install curl wget build-essential libgeoip-dev checkinstall git libgd2-xpm libgd2-xpm-dev
+        else
+			echo "$OS$DEBIAN_VERSION not support"
+			exit 1
+		fi
+else
+	echo "$OS not support"
+	exit 1 
+fi
+
  
+
 # clean
 rm -rf build
 mkdir build
@@ -44,12 +63,7 @@ mkdir build
 
 
 NUM_PROC=$(grep -c ^processor /proc/cpuinfo)
- 
-
-# install requirments
-
-sudo apt-get -y install curl wget build-essential libgeoip-dev checkinstall git libgd2-xpm libgd2-xpm-dev
- 
+	
 
 
 echo "Downloading source code..."
