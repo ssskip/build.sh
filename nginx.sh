@@ -13,15 +13,13 @@ export LUA_VERSION=LuaJIT-2.0.4
 
 export NGINX_VERSION=1.10.2
 
-export VERSION_PCRE=pcre-8.38
+export VERSION_PCRE=pcre-8.39
 
-export VERSION_LIBRESSL=libressl-2.4.1
+export VERSION_LIBRESSL=libressl-2.4.4
 
 export VERSION_NGINX_LUA=0.10.7
 
 export VERSION_NGINX=nginx-$NGINX_VERSION
-
-# export NGX_BROTLI_STATIC_MODULE_ONLY=1
 
 
  # tell nginx's build system where to find LuaJIT 2.1:
@@ -38,17 +36,13 @@ export SOURCE_NGINX_LUA=https://github.com/openresty/lua-nginx-module/archive/
 export SOURCE_LUAJIT=http://luajit.org/download/
 
 
+NUM_PROC=$(grep -c ^processor /proc/cpuinfo)
+
 # install requirments
 if [ $OS == 'Debian' ]; then
-        DEBIAN_VERSION=$(sed 's/\..*//' /etc/debian_version)
-        if [ $DEBIAN_VERSION == '8' ];then
-            sudo apt-get -y install curl wget build-essential libgeoip-dev checkinstall git libgd2-xpm-dev
-        elif [ $DEBIAN_VERSION == '7' ];then
-            sudo apt-get -y install curl wget build-essential libgeoip-dev checkinstall git libgd2-xpm libgd2-xpm-dev
-        else
-			echo "$OS$DEBIAN_VERSION not support"
-			exit 1
-		fi
+    sudo apt-get -y install curl wget build-essential libgeoip-dev checkinstall git libgd2-xpm-dev
+elif [ $OS == 'Ubuntu' ];then
+    sudo apt-get -y install curl wget build-essential libgeoip-dev checkinstall git libgd2-xpm-dev
 else
 	echo "$OS not support"
 	exit 1 
@@ -60,9 +54,6 @@ fi
 rm -rf build
 mkdir build
 
-
-
-NUM_PROC=$(grep -c ^processor /proc/cpuinfo)
 	
 
 
@@ -85,6 +76,7 @@ tar xzf $VERSION_PCRE.tar.gz
 tar xzf v$VERSION_NGINX_LUA.tar.gz
 tar xzf $LUA_VERSION.tar.gz
 cd ../
+
 
 # set where LibreSSL and nginx will be built
 
@@ -140,7 +132,6 @@ mkdir -p $BPATH/nginx
  --http-proxy-temp-path=/var/lib/nginx/proxy \
  --http-scgi-temp-path=/var/lib/nginx/scgi \
  --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
- --with-debug \
  --with-pcre-jit \
  --with-http_stub_status_module \
  --with-http_realip_module \

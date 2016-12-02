@@ -4,8 +4,10 @@ services:
 before_script:
   - cp ./nginx.sh ./test/nginx/debian7/
   - cp ./nginx.sh ./test/nginx/debian8/
+  - cp ./nginx.sh ./test/nginx/ubuntu/
 
 
 script:
-  - docker build ./test/nginx/debian7
-  - docker build ./test/nginx/debian8
+  - docker build -q ./test/nginx/debian7
+  - docker build -q ./test/nginx/debian8
+  - docker build -q ./test/nginx/ubuntu
