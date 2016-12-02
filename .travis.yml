@@ -8,6 +8,6 @@ before_script:
 
 
 script:
-  - docker build ./test/nginx/debian7
-  - docker build ./test/nginx/debian8
-  - docker build ./test/nginx/ubuntu
+  - docker build -q ./test/nginx/debian7
+  - docker build -q ./test/nginx/debian8
+  - docker build -q ./test/nginx/ubuntu
