@@ -21,6 +21,7 @@ export VERSION_NGINX_LUA=0.10.7
 
 export VERSION_NGINX=nginx-$NGINX_VERSION
 
+export VERSION_NGINX_HEADERS_MORE=0.32
 
  # tell nginx's build system where to find LuaJIT 2.1:
  export LUAJIT_LIB=/usr/local/lib
@@ -34,6 +35,7 @@ export SOURCE_NGINX=http://nginx.org/download/
 export SOURCE_BROTLI=https://github.com/google/ngx_brotli.git
 export SOURCE_NGINX_LUA=https://github.com/openresty/lua-nginx-module/archive/
 export SOURCE_LUAJIT=http://luajit.org/download/
+export SOURCE_HEADERS_MORE=https://github.com/openresty/headers-more-nginx-module/archive/
 
 
 NUM_PROC=$(grep -c ^processor /proc/cpuinfo)
@@ -63,6 +65,7 @@ wget -P ./build $SOURCE_LIBRESSL$VERSION_LIBRESSL.tar.gz
 wget -P ./build $SOURCE_NGINX$VERSION_NGINX.tar.gz
 wget -P ./build ${SOURCE_NGINX_LUA}v${VERSION_NGINX_LUA}.tar.gz
 wget -P ./build $SOURCE_LUAJIT$LUA_VERSION.tar.gz
+wget -P ./build ${SOURCE_HEADERS_MORE}v${VERSION_NGINX_HEADERS_MORE}.tar.gz
 
 
  
@@ -75,6 +78,7 @@ tar xzf $VERSION_LIBRESSL.tar.gz
 tar xzf $VERSION_PCRE.tar.gz
 tar xzf v$VERSION_NGINX_LUA.tar.gz
 tar xzf $LUA_VERSION.tar.gz
+tar xzf v$VERSION_NGINX_HEADERS_MORE.tar.gz
 cd ../
 
 
@@ -140,6 +144,7 @@ mkdir -p $BPATH/nginx
  --with-http_geoip_module \
  --with-http_gzip_static_module \
  --add-module=$BPATH/lua-nginx-module-$VERSION_NGINX_LUA
+ --add-module=$BPATH/headers-more-nginx-module-$VERSION_NGINX_HEADERS_MORE
 
  
 touch $STATICLIBSSL/.openssl/include/openssl/ssl.h

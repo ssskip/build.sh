@@ -3,9 +3,12 @@
 [![Build Status](https://travis-ci.org/ssskip/build.sh.png?branch=master)](https://travis-ci.org/ssskip/build.sh)
 
 
-## Collections
+## Collection
 
-- [x] nginx.sh (build lastest stable Nginx with LibreSSL & Lua & GEO)
+- [x] nginx.sh (build lastest stable Nginx with:)
+    * [LibreSSL](https://www.libressl.org/)
+    * [Lua](https://github.com/openresty/lua-nginx-module)
+    * [More headers](https://github.com/openresty/headers-more-nginx-module)
 
 
 
