@@ -143,13 +143,13 @@ mkdir -p $BPATH/nginx
  --with-http_addition_module \
  --with-http_geoip_module \
  --with-http_gzip_static_module \
- --add-module=$BPATH/lua-nginx-module-$VERSION_NGINX_LUA
+ --add-module=$BPATH/lua-nginx-module-$VERSION_NGINX_LUA \
  --add-module=$BPATH/headers-more-nginx-module-$VERSION_NGINX_HEADERS_MORE
 
  
 touch $STATICLIBSSL/.openssl/include/openssl/ssl.h
 make -j $NUM_PROC && sudo checkinstall --pkgname="nginx-custom" --pkgversion="$NGINX_VERSION" \
---provides="nginx" --requires="libc6, libpcre3, zlib1g" --strip=yes \
+--provides="nginx" --maintainer="ssskip" --strip=yes \
 --stripso=yes --backup=yes -y --install=yes
  
 echo "Done."
