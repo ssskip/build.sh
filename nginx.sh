@@ -13,9 +13,9 @@ export LUA_VERSION=LuaJIT-2.0.4
 
 export NGINX_VERSION=1.12.1
 
-export VERSION_PCRE=pcre-8.39
+export VERSION_PCRE=pcre-8.41
 
-export VERSION_LIBRESSL=libressl-2.4.4
+export VERSION_LIBRESSL=libressl-2.4.5
 
 export VERSION_NGINX_LUA=0.10.7
 
@@ -128,7 +128,6 @@ mkdir -p $BPATH/nginx
 --with-http_ssl_module \
 --with-http_v2_module \
 --with-file-aio \
---with-ipv6 \
 --with-http_gzip_static_module \
 --with-http_stub_status_module \
 --without-mail_pop3_module \
