@@ -11,7 +11,7 @@ export VER=$(lsb_release -sr)
 
 export LUA_VERSION=LuaJIT-2.0.4
 
-export NGINX_VERSION=1.10.2
+export NGINX_VERSION=1.12.1
 
 export VERSION_PCRE=pcre-8.39
 
