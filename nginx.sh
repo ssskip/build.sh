@@ -17,7 +17,7 @@ export VERSION_PCRE=pcre-8.41
 
 export VERSION_LIBRESSL=libressl-2.4.5
 
-export VERSION_NGINX_LUA=0.10.8
+export VERSION_NGINX_LUA=0.10.10
 
 export VERSION_NGINX=nginx-$NGINX_VERSION
 
