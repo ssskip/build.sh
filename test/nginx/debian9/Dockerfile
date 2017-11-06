@@ -1,4 +1,4 @@
-FROM debian:7
+FROM debian:9
 
 WORKDIR /tmp
 

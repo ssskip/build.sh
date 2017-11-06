@@ -1,8 +1,8 @@
 from ubuntu:latest
 
-WORKDIR /home/testing
+WORKDIR /tmp
 
-COPY nginx.sh ./
+COPY nginx.sh /tmp/
 
 RUN apt-get update && apt-get install -y \
     sudo \
