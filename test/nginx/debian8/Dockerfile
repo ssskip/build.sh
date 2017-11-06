@@ -1,8 +1,8 @@
 FROM debian:8
 
-WORKDIR /home/testing
+WORKDIR /tmp
 
-COPY nginx.sh ./
+COPY nginx.sh /tmp/
 
 RUN apt-get update && apt-get install -y \
     sudo \
